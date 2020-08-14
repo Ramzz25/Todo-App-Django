@@ -1,0 +1,27 @@
+{% extends "todo_app/base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block start_body %}
+
+{% if user.is_authenticated %}
+
+<div class="jumbotron">
+    <h2> This is your homepage! </h2>
+    <h3> Go to 'Add a note' to create a new note. </h3>
+    <h3> Go to 'Pending' to see existing note. </h3>
+</div>
+
+{% else %}
+
+<div class="jumbotron">
+    <h1> Welcome to the application! </h1>
+    <h4> Made using Django </h4>
+    <h3> You can organize your todo lists using this Web app </h3>
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %}My Web app{% endblock %} </title>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/mystyles.CSS' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    {% block head %}
+    {% endblock %}
+</head>
+<body style="background-color:coral;">
+    
+    <ul>
+        <li><a href="{% url 'index' %}">Home</a></li>
+
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'todo_app:add_note' %}">Add a note</a></li>
+            <li><a href="{% url 'todo_app:view_note' %}">Pending Notes</a></li>
+            <li style="float:right"><a href="{% url 'logout' %}"> Logout </a></li>
+        {% else %}
+            <li><a href="{% url 'todo_app:register' %}">Register</a></li>
+            <li style="float:right"><a href="{% url 'todo_app:user_login' %}"> Login </a></li>    
+        {% endif %}
+    </ul>
+
+    <div class="container">
+        {% block start_body %}
+
+        {% endblock %}
+    </div>
+
+</body>
+</html>

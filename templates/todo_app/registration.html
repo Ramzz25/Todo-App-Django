@@ -1,0 +1,28 @@
+{% extends "todo_app/base.html" %}
+
+{% block title %}
+Registration
+{% endblock %}
+
+{% block start_body %}
+
+<div class="jumbotron">
+    
+    {% if registered %}
+        <h1> Thank You for registering at our site.</h1>
+        <h3> Please Login and start using our app.</h3>
+    {% else %}
+        <h1>Register Here!!</h1>
+        <h3>Please fill out the form:</h3>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            <input type="submit" name="" value="Register">
+        </form>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

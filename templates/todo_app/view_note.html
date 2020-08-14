@@ -1,0 +1,30 @@
+{% extends "todo_app/base.html" %}
+{% load static %}
+{% block title %}
+Notes
+{% endblock %}
+
+{% block start_body %}
+
+{% if list_isThere %}
+{% for itm in todo_list %}
+    <div class="jumbotron">
+        <h2> <strong> {{ itm.title }} </strong> </h2>
+        <p>{{ itm.description }}</p>
+
+        <form action="/delete_todo/{{itm.id}}" method='GET'>
+        <button class="button" type='submit'>Delete</button>
+        </form>
+        
+    </div>
+{% endfor %}
+{% else %}
+{% for titl,des in todo_list.items %}
+    <div class="jumbotron">
+        <h2> <strong> {{ titl }} </strong> </h2>
+        <p>{{ des }}</p>
+    </div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}
